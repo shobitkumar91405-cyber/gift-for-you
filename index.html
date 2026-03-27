@@ -1,232 +1,221 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Good Morning Madam Ji ❤️</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #ffc1e3);
-      color: white;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Morning Madam Ji ☕</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%);
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #ffd1ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    /* Soft floating hearts background */
-    .hearts {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Container with Glassmorphism */
+        .container {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 40px 20px;
+            border-radius: 30px;
+            text-align: center;
+            z-index: 10;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            width: 90%;
+            max-width: 400px;
+        }
+        
+        .coffee {
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            display: inline-block;
+            animation: coffeeFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+        }
+        
+        @keyframes coffeeFloat {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.8rem;
+            color: #d63384;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(255,255,255,0.8);
+        }
+        
+        .message {
+            font-size: 1.2rem;
+            color: #5d4037;
+            margin-bottom: 30px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
 
-    .heart {
-      position: absolute;
-      font-size: 20px;
-      opacity: 0.3;
-      animation: floatHeart 15s linear infinite;
-      color: #ff1493;
-    }
+        .heart-icon {
+            color: #ff4d6d;
+            display: inline-block;
+            animation: beat 0.8s infinite alternate;
+        }
 
-    @keyframes floatHeart {
-      0% { transform: translateY(100vh) rotate(0deg); }
-      100% { transform: translateY(-100px) rotate(360deg); }
-    }
+        @keyframes beat {
+            to { transform: scale(1.3); }
+        }
+        
+        .open-btn {
+            background: linear-gradient(45deg, #ff4d6d, #ff758c);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .open-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(255, 77, 109, 0.5);
+        }
+        
+        /* Optimized Hearts (Lag Free) */
+        .heart {
+            position: absolute;
+            color: rgba(255, 77, 109, 0.6);
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 1;
+            will-change: transform;
+            animation: heartMove linear infinite;
+        }
+        
+        @keyframes heartMove {
+            0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
+        }
+        
+        /* Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .video-container {
+            width: 85%;
+            max-width: 500px;
+            border: 3px solid #ff758c;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 30px #ff758c;
+        }
+        
+        video { width: 100%; display: block; }
 
-    /* Intro Screen */
-    #intro {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .real-flower {
-      width: 220px;
-      height: 220px;
-      position: relative;
-      margin-bottom: 30px;
-      filter: drop-shadow(0 15px 30px rgba(255,20,147,0.5));
-    }
-
-    .petal {
-      position: absolute;
-      width: 68px;
-      height: 105px;
-      background: linear-gradient(145deg, #ff69b4, #ff1493, #db2777);
-      border-radius: 60% 40% 65% 35%;
-      box-shadow: inset 0 12px 25px rgba(255,255,255,0.7),
-                  0 8px 20px rgba(200,0,100,0.4);
-      opacity: 0;
-      transform-origin: bottom center;
-      animation: romanticBloom 5.5s ease-in-out forwards;
-    }
-
-    .petal:nth-child(1)  { transform: rotate(0deg);   animation-delay: 0.4s; }
-    .petal:nth-child(2)  { transform: rotate(36deg);  animation-delay: 0.8s; }
-    .petal:nth-child(3)  { transform: rotate(72deg);  animation-delay: 1.2s; }
-    .petal:nth-child(4)  { transform: rotate(108deg); animation-delay: 1.6s; }
-    .petal:nth-child(5)  { transform: rotate(144deg); animation-delay: 2s; }
-    .petal:nth-child(6)  { transform: rotate(180deg); animation-delay: 2.4s; }
-    .petal:nth-child(7)  { transform: rotate(216deg); animation-delay: 2.8s; }
-    .petal:nth-child(8)  { transform: rotate(252deg); animation-delay: 3.2s; }
-    .petal:nth-child(9)  { transform: rotate(288deg); animation-delay: 3.6s; }
-    .petal:nth-child(10){ transform: rotate(324deg); animation-delay: 4s; }
-
-    .center {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 52px; height: 52px;
-      background: radial-gradient(#ffd700, #ff8c00);
-      border-radius: 50%;
-      box-shadow: 0 0 35px #ffaa00, inset 0 10px 15px #fff;
-      z-index: 2;
-    }
-
-    @keyframes romanticBloom {
-      0%   { opacity: 0; transform: scale(0.25) rotate(var(--rot)) translateY(30px); }
-      70%  { opacity: 1; transform: scale(1.08) rotate(var(--rot)); }
-      100% { opacity: 1; transform: scale(1) rotate(var(--rot)); }
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      text-shadow: 0 0 20px rgba(255,255,255,0.9);
-      margin: 20px 0;
-      line-height: 1.3;
-    }
-
-    .open-btn {
-      margin-top: 40px;
-      padding: 18px 50px;
-      font-size: 1.5rem;
-      background: rgba(255,255,255,0.2);
-      border: 3px solid white;
-      border-radius: 50px;
-      color: white;
-      cursor: pointer;
-      transition: all 0.4s;
-      box-shadow: 0 10px 25px rgba(255,20,147,0.4);
-    }
-
-    .open-btn:hover {
-      background: white;
-      color: #ff1493;
-      transform: scale(1.1);
-    }
-
-    /* Video Screen */
-    #video-screen {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      display: none;
-      z-index: 20;
-      background: black;
-    }
-
-    #romanticVideo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  </style>
+        @media (max-width: 480px) {
+            h1 { font-size: 3rem; }
+            .message { font-size: 1.1rem; }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Background Music (Romantic) -->
-  <audio id="bgMusic" loop>
-    <source src="YOUR_ROMANTIC_MUSIC_MP3_LINK_HERE.mp3" type="audio/mpeg">
-    <!-- Example: Tere Liye ya koi soft love instrumental -->
-  </audio>
-
-  <!-- Floating Hearts -->
-  <div class="hearts" id="hearts"></div>
-
-  <!-- Intro Screen -->
-  <div id="intro">
-    <div class="real-flower">
-      <div class="petal" style="--rot: 0deg"></div>
-      <div class="petal" style="--rot: 36deg"></div>
-      <div class="petal" style="--rot: 72deg"></div>
-      <div class="petal" style="--rot: 108deg"></div>
-      <div class="petal" style="--rot: 144deg"></div>
-      <div class="petal" style="--rot: 180deg"></div>
-      <div class="petal" style="--rot: 216deg"></div>
-      <div class="petal" style="--rot: 252deg"></div>
-      <div class="petal" style="--rot: 288deg"></div>
-      <div class="petal" style="--rot: 324deg"></div>
-      <div class="center"></div>
+    <div id="heart-container"></div>
+    
+    <div class="container">
+        <div class="coffee">☕</div>
+        <h1>Good Morning</h1>
+        <p class="message">
+            Madam Ji <span class="heart-icon">❤️</span><br>
+            Aapki muskurahat jaisa pyaara ho<br>
+            aapka aaj ka din! ✨
+        </p>
+        <button class="open-btn" onclick="openVideo()">
+            🌹 Kholiye Isse 🌹
+        </button>
     </div>
     
-    <h1>Good Morning ☕<br>Madam Ji ❤️</h1>
-    <p style="font-size:1.5rem; margin-top:10px;">Have a beautiful day just like you ✨</p>
+    <div class="video-modal" id="videoModal" onclick="closeVideo()">
+        <div class="video-container">
+            <video id="romanticVideo" src="video1.mp4" loop playsinline>
+                Your browser does not support video.
+            </video>
+        </div>
+    </div>
     
-    <button class="open-btn" onclick="openVideo()">Open This 💌</button>
-  </div>
-
-  <!-- Video Screen -->
-  <div id="video-screen">
-    <video id="romanticVideo" autoplay playsinline loop muted>
-      <source src="video1.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-
-  <script>
-    const music = document.getElementById('bgMusic');
-    const videoScreen = document.getElementById('video-screen');
-    const intro = document.getElementById('intro');
-    const video = document.getElementById('romanticVideo');
-
-    // Play music on first tap
-    function playMusic() {
-      music.play().catch(() => {});
-    }
-    document.body.addEventListener('click', playMusic, { once: true });
-
-    // Create floating hearts
-    function createHearts() {
-      const container = document.getElementById('hearts');
-      for (let i = 0; i < 25; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.textContent = '❤️';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = (Math.random() * 12 + 12) + 's';
-        heart.style.animationDelay = Math.random() * -15 + 's';
-        heart.style.fontSize = (Math.random() * 15 + 18) + 'px';
-        heart.style.opacity = Math.random() * 0.4 + 0.2;
-        container.appendChild(heart);
-      }
-    }
-
-    function openVideo() {
-      intro.style.opacity = '0';
-      setTimeout(() => {
-        intro.style.display = 'none';
-        videoScreen.style.display = 'block';
+    <script>
+        // Lag-free hearts creation
+        function createHearts() {
+            const container = document.getElementById('heart-container');
+            const heartIcons = ['❤️', '💖', '🌸', '✨', '🌹'];
+            
+            for (let i = 0; i < 15; i++) { // Limited count for performance
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                
+                const leftPos = Math.random() * 100;
+                const duration = 5 + Math.random() * 5;
+                const delay = Math.random() * 5;
+                
+                heart.style.left = leftPos + 'vw';
+                heart.style.animationDuration = duration + 's';
+                heart.style.animationDelay = delay + 's';
+                heart.style.fontSize = (15 + Math.random() * 15) + 'px';
+                
+                container.appendChild(heart);
+            }
+        }
         
-        // Video controls remove karne ke liye
-        video.controls = false;
-        video.muted = true;        // agar sound nahi chahiye to true rakho, warna false
-        video.play();
-      }, 1200);
-    }
-
-    // Init
-    window.onload = () => {
-      createHearts();
-      // Agar video mein sound chahiye to yahan music.pause() kar sakte ho jab video start ho
-    };
-  </script>
+        function openVideo() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('romanticVideo');
+            modal.style.display = 'flex';
+            video.play().catch(e => console.log("Auto-play blocked, playing on interaction"));
+        }
+        
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('romanticVideo');
+            modal.style.display = 'none';
+            video.pause();
+        }
+        
+        // Initialize
+        createHearts();
+    </script>
 </body>
 </html>
