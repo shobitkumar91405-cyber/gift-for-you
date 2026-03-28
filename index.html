@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nice to Meet You Anushka ✨</title>
+    <title>Good Morning ☕ My tannu(tanishka) </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap');
         
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
         body {
-            background: radial-gradient(circle at center, #ff6b9d 0%, #c44569 50%, #2c1810 100%);
+            background: radial-gradient(circle at center, #ff6b35 0%, #f7931e 50%, #000000 100%);
             font-family: 'Poppins', sans-serif;
             overflow: hidden; height: 100vh; width: 100vw;
             color: #ffffff; user-select: none; touch-action: manipulation;
@@ -18,10 +18,10 @@
 
         #stars-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
         .star { 
-            position: absolute; background: #ff9fc7; border-radius: 50%; 
+            position: absolute; background: #fff176; border-radius: 50%; 
             animation: realTwinkle var(--dur) infinite ease-in-out;
             will-change: opacity, transform;
-            box-shadow: 0 0 5px #ffb6d2;
+            box-shadow: 0 0 5px #ffd54f;
         }
         @keyframes realTwinkle {
             0%, 100% { opacity: 0.3; transform: scale(0.7); }
@@ -46,7 +46,7 @@
 
         .cute-msg { 
             font-family: 'Dancing Script', cursive; color: #ffffff; 
-            text-shadow: 0 0 20px #ff6b9d, 3px 3px 8px rgba(0,0,0,0.8); 
+            text-shadow: 0 0 20px #ff6b35, 3px 3px 8px rgba(0,0,0,0.8); 
             font-size: clamp(2.5rem, 9vw, 3.5rem); 
             margin-top: 15px; font-weight: 700; line-height: 1.2;
         }
@@ -67,25 +67,14 @@
         @keyframes sparkle { 0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0.5; } 50% { transform: scale(1.2) rotate(180deg); opacity: 1; } }
 
         .glow-btn { 
-            background: linear-gradient(45deg, #ff6b9d, #ff8fab, #ffc107); 
+            background: linear-gradient(45deg, #ff6b35, #ff8f00, #ffc107); 
             padding: 16px 40px; border-radius: 50px; font-weight: 700; 
-            box-shadow: 0 0 25px rgba(255,107,157,0.5); 
+            box-shadow: 0 0 25px rgba(255,152,0,0.5); 
             cursor: pointer; border: none; color: #1a1a1a; font-size: 1.15rem;
             margin-top: 25px; transition: 0.3s;
             text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
         }
         .glow-btn:active { transform: scale(0.92); }
-
-        .final-surprise {
-            background: linear-gradient(45deg, #ff6b9d, #c44569, #ffeb3b);
-            animation: rainbowPulse 2s infinite;
-            box-shadow: 0 0 40px rgba(255,107,157,0.8);
-        }
-        @keyframes rainbowPulse {
-            0%, 100% { box-shadow: 0 0 40px rgba(255,107,157,0.8); }
-            33% { box-shadow: 0 0 40px rgba(255,235,59,0.8); }
-            66% { box-shadow: 0 0 40px rgba(196,69,105,0.8); }
-        }
 
         .solar-system { position: relative; width: 300px; height: 300px; display: flex; align-items: center; justify-content: center; }
         .orbit { position: absolute; border: 3px solid rgba(255,235,59,0.4); border-radius: 50%; animation: spin linear infinite; }
@@ -95,7 +84,10 @@
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         .hold-container { width: 300px; height: 20px; background: rgba(255,255,255,0.15); border-radius: 12px; margin-top: 30px; overflow: hidden; border: 3px solid #ffeb3b; }
-        #holdProgress { height: 100%; background: linear-gradient(90deg, #ff6b9d, #ffc107); width: 0%; transition: width 0.1s linear; }
+        #holdProgress { height: 100%; background: linear-gradient(90deg, #ff6b35, #ffc107); width: 0%; transition: width 0.1s linear; }
+
+        #videoLayer { display: none; position: fixed; inset: 0; background: #1a1a1a; z-index: 1000; align-items: center; justify-content: center; }
+        video { width: 100%; height: 100%; object-fit: contain; }
 
         .floating-emojis {
             position: absolute; font-size: 2rem; animation: floatUp 4s infinite linear;
@@ -104,118 +96,102 @@
             0% { opacity: 1; transform: translateY(0) rotate(0deg); }
             100% { opacity: 0; transform: translateY(-200px) rotate(360deg); }
         }
-
-        .instagram-heart {
-            color: #e4405f;
-            text-shadow: 0 0 10px #e4405f;
-            animation: heartBeat 1.5s infinite;
-        }
-        @keyframes heartBeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        .confetti {
-            position: fixed; pointer-events: none; z-index: 1000;
-            font-size: 1.5rem; animation: confettiFall 3s linear infinite;
-        }
-        @keyframes confettiFall {
-            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
     </style>
 </head>
 <body>
 
-    <div class="header-tag">Follow on inta - @smss1708 </div>
-    <audio id="bgMusic" loop src="tere-liye.mp3" preload="auto"></audio>
+    <div class="header-tag">Good Morning ☕ Tanishka</div>
+    <audio id="bgMusic" loop src="good-morning.mp3" preload="auto"></audio>
     <div id="stars-container"></div>
 
-    <!-- SLIDE 1 - INSTAGRAM HELLO -->
+    <!-- SLIDE 1 - SUN RISING -->
     <div id="slide1" class="slide active">
-        <div class="emoji-frame instagram-heart">💕</div>
-        <h1 class="cute-msg">Nice to Meet You Anushka! ✨</h1>
-        <p class="sub-text">Instagram pe pehli baar mila, dil se hello!</p>
-        <button onclick="startApp()" class="glow-btn">Let's Connect 💕✨</button>
+        <div class="emoji-frame" id="sunFrame1">☀️</div>
+        <h1 class="cute-msg">Good Morning ☕✨</h1>
+        <p class="sub-text">Uth gayi maidam Ji ? Coffee ka time ho gaya!</p>
+        <button onclick="startApp()" class="glow-btn">Start My Day ☕❤️</button>
     </div>
 
-    <!-- SLIDE 2 - INSTAGRAM VIBE -->
+    <!-- SLIDE 2 - COFFEE HEART -->
     <div id="slide2" class="slide">
-        <div class="emoji-frame">📱💖✨</div>
-        <h1 class="cute-msg">Instagram Magic! 🌟</h1>
-        <p class="sub-text">Teri profile dekhi, dil khush ho gaya!</p>
-        <button onclick="next()" class="glow-btn">Aur dekho 💕📸</button>
+        <div class="emoji-frame">☕💖</div>
+        <h1 class="cute-msg">Tu meri subah hai! 🌅</h1>
+        <p class="sub-text">Tere bina coffee bhi fika lagta hai baby!</p>
+        <button onclick="next()" class="glow-btn">Aur dekho ☕💕</button>
     </div>
 
-    <!-- SLIDE 3 - SMILE POWER -->
+    <!-- SLIDE 3 - FLOWERS -->
     <div id="slide3" class="slide">
-        <div class="emoji-frame">😍🌸💫</div>
-        <h1 class="cute-msg">Teri Smile! 😊</h1>
-        <p class="sub-text">Instagram pe hi itni pyaari lag rahi hai!</p>
-        <button onclick="next()" class="glow-btn">Continue ✨💖</button>
+        <div class="emoji-frame">🌸🌺🌻</div>
+        <h1 class="cute-msg">Sweetest Smile! 😍</h1>
+        <p class="sub-text">Teri smile se din ban jata hai mera!</p>
+        <button onclick="next()" class="glow-btn">Continue ☕✨</button>
     </div>
 
-    <!-- SLIDE 4 - HOLD FOR FEELING -->
+    <!-- SLIDE 4 - HOLD BUTTON -->
     <div id="slide4" class="slide">
-        <div class="text-8xl mb-6 transition-transform duration-300" id="pulseHeart">💕</div>
-        <h1 class="cute-msg">Kitna excited hu?</h1>
+        <div class="text-8xl mb-6 transition-transform duration-300" id="pulseHeart">☕💖</div>
+        <h1 class="text-2xl font-bold">Kitna pyar karta hu?</h1>
         <div class="hold-container"><div id="holdProgress"></div></div>
-        <button id="holdBtn" class="glow-btn select-none">PRESS & HOLD TO FEEL ✨</button>
+        <button id="holdBtn" class="glow-btn select-none">PRESS & HOLD TO FEEL ☕</button>
     </div>
 
-    <!-- SLIDE 5 - CONNECTION VIBE -->
+    <!-- SLIDE 5 - COFFEE CUPS -->
     <div id="slide5" class="slide">
-        <div class="emoji-frame">💬💕🌈</div>
-        <h1 class="cute-msg">Chat karna hai! 💬</h1>
-        <p class="sub-text">Instagram se real connection banaye!</p>
-        <button onclick="next()" class="glow-btn">Next 💕✨</button>
+        <div class="emoji-frame">☕☕💕</div>
+        <h1 class="cute-msg">Coffee & Cuddles! 🤗</h1>
+        <p class="sub-text">Yeh combination perfect hai jaise hum!</p>
+        <button onclick="next()" class="glow-btn">Next ☕💕</button>
     </div>
 
-    <!-- SLIDE 6 - SOLAR SYSTEM LOVE -->
+    <!-- SLIDE 6 - SOLAR SYSTEM -->
     <div id="slide6" class="slide">
         <div class="solar-system">
-            <div class="orbit orbit-1"><span class="planet">📱</span></div>
-            <div class="orbit orbit-2"><span class="planet">💖</span></div>
-            <div class="text-6xl">✨</div>
+            <div class="orbit orbit-1"><span class="planet">☕</span></div>
+            <div class="orbit orbit-2"><span class="planet">🌞</span></div>
+            <div class="text-6xl">❤️</div>
         </div>
-        <h1 class="cute-msg">Meri New Star! 🌟</h1>
-        <p class="sub-text">Instagram se mili tu, ab meri favorite!</p>
-        <button onclick="next()" class="glow-btn">Aur dekho 💕🚀</button>
+        <h1 class="cute-msg mt-10">Meri Duniya! 🌍</h1>
+        <p class="sub-text">Tu meri subah, tu mera coffee, tu mera sab kuch!</p>
+        <button onclick="next()" class="glow-btn">Aur dekho ☕🚀</button>
     </div>
 
-    <!-- SLIDE 7 - FRIENDSHIP GOAL -->
+    <!-- SLIDE 7 - HEART FLOWERS -->
     <div id="slide7" class="slide">
-        <div class="emoji-frame">🌺💝✨</div>
-        <h1 class="cute-msg">Best Friends? 🤝</h1>
-        <p class="sub-text">Instagram se shuru hui yeh dosti hamesha rahe!</p>
-        <button onclick="next()" class="glow-btn">Special Moment 💕</button>
+        <div class="emoji-frame">💝🌹🌺</div>
+        <h1 class="cute-msg">Hamesha saath rehna tannu(tanishka)! 🥺</h1>
+        <p class="sub-text">Har subah tere saath coffee peene ka sapna!</p>
+        <button onclick="next()" class="glow-btn">Special Surprise ☕✨</button>
     </div>
 
-    <!-- SLIDE 8 - SHINE ON -->
+    <!-- SLIDE 8 - SUNSHINE -->
     <div id="slide8" class="slide">
-        <div class="emoji-frame">🌟🌈💖</div>
-        <h1 class="cute-msg">Shine Bright Anushka! ✨</h1>
-        <p class="sub-text">Instagram pe teri sparkle ne dil chura liya!</p>
-        <button onclick="next()" class="glow-btn">Final Surprise 💕</button>
+        <div class="emoji-frame">☀️🌈✨</div>
+        <h1 class="cute-msg">You're My Sunshine! ☀️</h1>
+        <p class="sub-text">Cloudy days bhi sunny ho jate hain tere saath!</p>
+        <button onclick="next()" class="glow-btn">Final Touch ☕💖</button>
     </div>
 
-    <!-- SLIDE 9 - CONNECT NOW -->
+    <!-- SLIDE 9 - PHONE CALL -->
     <div id="slide9" class="slide">
-        <div class="emoji-frame">💬📱💕</div>
-        <h1 class="cute-msg">DM bhejun? 💌</h1>
+        <div class="emoji-frame">📞☕❤️</div>
+        <h1 class="cute-msg">Good Morning Call? 📱</h1>
         <div id="btnContainer" class="flex flex-wrap justify-center gap-3 mt-4">
-            <button id="yesBtn" class="glow-btn">YES! DM ME 😍</button>
-            <button id="noBtn" class="px-8 py-3 bg-gray-800 rounded-full text-gray-400 mt-5">Shy? 🥰</button>
+            <button id="yesBtn" class="glow-btn">YES! CALL ME ☕😍</button>
+            <button id="noBtn" class="px-8 py-3 bg-gray-800 rounded-full text-gray-400 mt-5">No 🥺</button>
         </div>
     </div>
 
-    <!-- SLIDE 10 - GRAND FINALE -->
+    <!-- SLIDE 10 - FINAL -->
     <div id="slide10" class="slide">
-        <div class="emoji-frame">🎉✨🥰</div>
-        <h1 class="cute-msg">Yay! Connection Made! 💕</h1>
-        <p class="sub-text">Instagram se shuru hui yeh dosti special hai!</p>
-        <button onclick="grandFinale()" class="glow-btn final-surprise animate-bounce" style="font-size: 1.3rem;">MAGIC FINALE 🎁✨</button>
-        <p style="margin-top: 20px; font-size: 1.1rem; opacity: 0.9;">DM await kar rahi hu! 💌</p>
+        <div class="emoji-frame">🎉☕🥳</div>
+        <h1 class="cute-msg">Yay! Call mat bhoolna! 📱☕</h1>
+        <p class="sub-text">Ab coffee bana aur call kar de apni jaan ko!</p>
+        <button onclick="playSurprise()" class="glow-btn animate-bounce">FINAL SURPRISE 🎁☕</button>
+    </div>
+
+    <div id="videoLayer">
+        <video id="vPlayer" playsinline src="video1.mp4"></video>
     </div>
 
     <script>
@@ -239,7 +215,7 @@
         }
         
         // Floating emojis
-        const floatEmojis = ['💕', '✨', '🌟', '😍', '🌸', '📱'];
+        const floatEmojis = ['☕', '🌸', '☀️', '💖', '🌺'];
         for(let i=0; i<30; i++) {
             const emoji = document.createElement('div');
             emoji.className = 'floating-emojis';
@@ -284,7 +260,7 @@
             for(let i = 0; i < 5; i++) {
                 const btn = document.createElement('button');
                 btn.className = 'glow-btn';
-                btn.innerHTML = 'YES! DM ME 😍✨';
+                btn.innerHTML = 'YES! CALL ME ☕💖';
                 btn.onclick = () => setTimeout(next, 200);
                 container.appendChild(btn);
             }
@@ -316,60 +292,13 @@
         window.addEventListener('touchend', endH);
         window.addEventListener('mouseup', endH);
 
-        // GRAND FINALE - CONFETTI EXPLOSION
-        function grandFinale() {
+        function playSurprise() {
             music.pause();
-            
-            // Massive confetti explosion
-            const confettiEmojis = ['🎉', '✨', '💕', '🌟', '🥰', '💖', '🎊', '🌈'];
-            for(let i = 0; i < 100; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.textContent = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.animationDelay = Math.random() * 0.5 + 's';
-                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-                document.body.appendChild(confetti);
-                
-                setTimeout(() => confetti.remove(), 4000);
-            }
-            
-            // Victory message
-            const finaleMsg = document.createElement('div');
-            finaleMsg.innerHTML = `
-                <div style="font-family: 'Dancing Script', cursive; font-size: 3rem; color: #ffeb3b; text-shadow: 0 0 30px #ffeb3b; margin: 20px 0; animation: bounce 1s infinite;">
-                    Connection SUCCESS! 💕✨
-                </div>
-                <p style="font-size: 1.3rem; opacity: 0.95; max-width: 400px;">
-                    Ab DM kar de Anushka! Tera wait kar raha hu 😍<br>
-                    <span style="font-size: 1.5rem; color: #ff6b9d;">Instagram pe milenge! 📱💌</span>
-                </p>
-            `;
-            finaleMsg.style.position = 'fixed'; 
-            finaleMsg.style.top = '50%'; 
-            finaleMsg.style.left = '50%'; 
-            finaleMsg.style.transform = 'translate(-50%, -50%)'; 
-            finaleMsg.style.textAlign = 'center'; 
-            finaleMsg.style.zIndex = '1001';
-            finaleMsg.style.background = 'rgba(0,0,0,0.7)'; 
-            finaleMsg.style.padding = '40px'; 
-            finaleMsg.style.borderRadius = '30px'; 
-            finaleMsg.style.boxShadow = '0 0 50px rgba(255,107,157,0.6)';
-            document.body.appendChild(finaleMsg);
-            
-            // Replay button
-            setTimeout(() => {
-                const replayBtn = document.createElement('button');
-                replayBtn.innerHTML = '🔄 Replay Magic';
-                replayBtn.className = 'glow-btn';
-                replayBtn.style.position = 'fixed';
-                replayBtn.style.bottom = '30px';
-                replayBtn.style.left = '50%';
-                replayBtn.style.transform = 'translateX(-50%)';
-                replayBtn.style.zIndex = '1002';
-                replayBtn.onclick = () => location.reload();
-                document.body.appendChild(replayBtn);
-            }, 1000);
+            const layer = document.getElementById('videoLayer');
+            layer.style.display = 'flex';
+            const v = document.getElementById('vPlayer');
+            v.play();
+            v.onended = () => location.reload();
         }
     </script>
 </body>
