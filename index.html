@@ -2,304 +2,293 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Good Morning ☕ Laxmi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Morning Madam Ji ☕✨</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&family=Cinzel+Decorative:wght@700&display=swap');
         
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
-        body {
-            background: radial-gradient(circle at center, #ff6b35 0%, #f7931e 50%, #000000 100%);
-            font-family: 'Poppins', sans-serif;
-            overflow: hidden; height: 100vh; width: 100vw;
-            color: #ffffff; user-select: none; touch-action: manipulation;
+        body, html {
+            margin: 0; padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 25%, #a8edea 50%, #fed6e3 75%, #ffeaa7 100%);
+            font-family: 'Playfair Display', serif;
+            touch-action: none;
+            color: #2d3436;
         }
-
-        #stars-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-        .star { 
-            position: absolute; background: #fff176; border-radius: 50%; 
-            animation: realTwinkle var(--dur) infinite ease-in-out;
-            will-change: opacity, transform;
-            box-shadow: 0 0 5px #ffd54f;
-        }
-        @keyframes realTwinkle {
-            0%, 100% { opacity: 0.3; transform: scale(0.7); }
-            50% { opacity: 1; transform: scale(1.3); }
-        }
-
-        .header-tag {
-            position: fixed; top: 15px; width: 100%; text-align: center;
-            z-index: 100; font-family: 'Dancing Script', cursive;
-            color: #ffeb3b; font-size: 1.8rem;
-            text-shadow: 0 0 15px rgba(255,235,59,0.8);
-        }
-
-        .slide {
-            display: none; position: fixed; inset: 0; width: 100%; height: 100%;
+        
+        .premium-font { font-family: 'Dancing Script', cursive; font-weight: 700; }
+        .title-font { font-family: 'Cinzel Decorative', cursive; letter-spacing: 2px; }
+        
+        .section {
+            position: absolute; inset: 0;
+            display: none; opacity: 0;
             align-items: center; justify-content: center; flex-direction: column;
-            opacity: 0; z-index: 20; padding: 25px; text-align: center;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            transform: scale(0.98);
+            padding: 20px; width: 100vw; height: 100vh;
         }
-        .slide.active { display: flex; opacity: 1; transform: scale(1); }
 
-        .cute-msg { 
-            font-family: 'Dancing Script', cursive; color: #ffffff; 
-            text-shadow: 0 0 20px #ff6b35, 3px 3px 8px rgba(0,0,0,0.8); 
-            font-size: clamp(2.5rem, 9vw, 3.5rem); 
-            margin-top: 15px; font-weight: 700; line-height: 1.2;
+        .section.active { display: flex; opacity: 1; }
+
+        .glass-premium {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+            border-radius: 24px;
         }
-        .sub-text { color: #fffde7; font-weight: 600; font-size: 1.2rem; margin-top: 12px; max-width: 350px; text-shadow: 1px 1px 6px #000; }
         
-        .emoji-frame { 
-            width: 280px; height: 280px; border-radius: 40px; 
-            border: 6px solid #ffeb3b; box-shadow: 0 0 40px rgba(255,235,59,0.7); 
-            display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(0,0,0,0.3));
-            font-size: 8rem; position: relative; overflow: hidden;
+        .morning-glow {
+            color: #e17055;
+            text-shadow: 0 0 20px rgba(225, 112, 85, 0.5), 0 0 40px rgba(225, 112, 85, 0.3);
         }
-        .emoji-frame::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-            animation: sparkle 3s infinite;
+
+        .bg-sunrays { 
+            position: fixed; inset: 0; z-index: 1; pointer-events: none; 
+            background: radial-gradient(circle at 20% 80%, rgba(255,193,7,0.4) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255,107,107,0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(120,219,226,0.3) 0%, transparent 50%);
         }
-        @keyframes sparkle { 0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0.5; } 50% { transform: scale(1.2) rotate(180deg); opacity: 1; } }
-
-        .glow-btn { 
-            background: linear-gradient(45deg, #ff6b35, #ff8f00, #ffc107); 
-            padding: 16px 40px; border-radius: 50px; font-weight: 700; 
-            box-shadow: 0 0 25px rgba(255,152,0,0.5); 
-            cursor: pointer; border: none; color: #1a1a1a; font-size: 1.15rem;
-            margin-top: 25px; transition: 0.3s;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+        
+        .wish-card {
+            transition: all 0.4s ease;
+            transform: perspective(1000px) rotateX(2deg) rotateY(1deg);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
-        .glow-btn:active { transform: scale(0.92); }
-
-        .solar-system { position: relative; width: 300px; height: 300px; display: flex; align-items: center; justify-content: center; }
-        .orbit { position: absolute; border: 3px solid rgba(255,235,59,0.4); border-radius: 50%; animation: spin linear infinite; }
-        .orbit-1 { width: 200px; height: 200px; animation-duration: 7s; }
-        .orbit-2 { width: 280px; height: 280px; animation-duration: 12s; animation-direction: reverse; }
-        .planet { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); font-size: 28px; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        .hold-container { width: 300px; height: 20px; background: rgba(255,255,255,0.15); border-radius: 12px; margin-top: 30px; overflow: hidden; border: 3px solid #ffeb3b; }
-        #holdProgress { height: 100%; background: linear-gradient(90deg, #ff6b35, #ffc107); width: 0%; transition: width 0.1s linear; }
-
-        #videoLayer { display: none; position: fixed; inset: 0; background: #1a1a1a; z-index: 1000; align-items: center; justify-content: center; }
-        video { width: 100%; height: 100%; object-fit: contain; }
-
-        .floating-emojis {
-            position: absolute; font-size: 2rem; animation: floatUp 4s infinite linear;
+        .wish-card:hover, .wish-card:active {
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.05) translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 0.95);
         }
-        @keyframes floatUp {
-            0% { opacity: 1; transform: translateY(0) rotate(0deg); }
-            100% { opacity: 0; transform: translateY(-200px) rotate(360deg); }
+
+        .coffee-cup {
+            width: 120px; height: 140px;
+            background: radial-gradient(ellipse at center, #8B4513 0%, #A0522D 50%, #D2691E 100%);
+            border-radius: 60% 60% 40% 40% / 70% 70% 30% 30%;
+            position: absolute;
+            box-shadow: 0 10px 30px rgba(139,69,19,0.4);
+            animation: steamRise 4s ease-in-out infinite;
         }
+        .coffee-steam {
+            position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+            width: 4px; height: 30px; background: linear-gradient(to bottom, rgba(255,255,255,0.8), transparent);
+            border-radius: 2px; animation: steamFloat 3s ease-in-out infinite;
+        }
+        @keyframes steamRise { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.05); } }
+        @keyframes steamFloat { 0% { opacity: 0; transform: translateX(-50%) translateY(0) scale(0.5); } 50% { opacity: 1; transform: translateX(-50%) translateY(-15px) scale(1); } 100% { opacity: 0; transform: translateX(-50%) translateY(-30px) scale(1.5); } }
+        
+        .pop-text-anim {
+            animation: morningPop 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        @keyframes morningPop {
+            0% { opacity: 0; transform: translateY(40px) scale(0.7) rotate(-8deg); filter: blur(4px); }
+            70% { opacity: 1; transform: translateY(-10px) scale(1.15) rotate(2deg); filter: blur(0); }
+            100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+        }
+
+        .sun-rays {
+            position: absolute; width: 300px; height: 300px;
+            background: conic-gradient(from 0deg, transparent 0deg, #FFD700 10deg, transparent 20deg, #FFA500 30deg, transparent 40deg);
+            border-radius: 50%; animation: sunRotate 20s linear infinite; filter: blur(1px);
+        }
+        @keyframes sunRotate { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-    <div class="header-tag">Good Morning ☕ Laxmi</div>
-    <audio id="bgMusic" loop src="good-morning.mp3" preload="auto"></audio>
-    <div id="stars-container"></div>
-
-    <!-- SLIDE 1 - SUN RISING -->
-    <div id="slide1" class="slide active">
-        <div class="emoji-frame" id="sunFrame1">☀️</div>
-        <h1 class="cute-msg">Good Morning ☕✨</h1>
-        <p class="sub-text">Uth gayi Laxmi? Coffee ka time ho gaya!</p>
-        <button onclick="startApp()" class="glow-btn">Start My Day ☕❤️</button>
+    <div class="fixed top-4 left-0 w-full text-center z-[100] text-slate-600/70 text-xs font-mono tracking-widest pointer-events-none">
+        Good Morning Animation ✨
     </div>
 
-    <!-- SLIDE 2 - COFFEE HEART -->
-    <div id="slide2" class="slide">
-        <div class="emoji-frame">☕💖</div>
-        <h1 class="cute-msg">Tu meri subah hai Laxmi! 🌅</h1>
-        <p class="sub-text">Tere bina coffee bhi fika lagta hai baby!</p>
-        <button onclick="next()" class="glow-btn">Aur dekho ☕💕</button>
-    </div>
+    <audio id="bgmusic" loop>
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMc=" type="audio/wav">
+    </audio>
 
-    <!-- SLIDE 3 - FLOWERS -->
-    <div id="slide3" class="slide">
-        <div class="emoji-frame">🌸🌺🌻</div>
-        <h1 class="cute-msg">Sweetest Smile Laxmi! 😍</h1>
-        <p class="sub-text">Teri smile se din ban jata hai mera!</p>
-        <button onclick="next()" class="glow-btn">Continue ☕✨</button>
-    </div>
+    <div class="bg-sunrays"></div>
 
-    <!-- SLIDE 4 - HOLD BUTTON -->
-    <div id="slide4" class="slide">
-        <div class="text-8xl mb-6 transition-transform duration-300" id="pulseHeart">☕💖</div>
-        <h1 class="text-2xl font-bold">Kitna pyar karti hu Laxmi?</h1>
-        <div class="hold-container"><div id="holdProgress"></div></div>
-        <button id="holdBtn" class="glow-btn select-none">PRESS & HOLD TO FEEL ☕</button>
-    </div>
+    <!-- Floating Coffee Cups -->
+    <div class="coffee-cup" style="left:10%; animation-delay:0s;"></div>
+    <div class="coffee-cup" style="left:25%; animation-delay:1s; --coffee-color:#6B3A1E;"></div>
+    <div class="coffee-cup" style="left:85%; animation-delay:0.5s;"></div>
+    <div class="coffee-cup" style="left:70%; animation-delay:2s;"></div>
 
-    <!-- SLIDE 5 - COFFEE CUPS -->
-    <div id="slide5" class="slide">
-        <div class="emoji-frame">☕☕💕</div>
-        <h1 class="cute-msg">Coffee & Cuddles Laxmi! 🤗</h1>
-        <p class="sub-text">Yeh combination perfect hai jaise hum!</p>
-        <button onclick="next()" class="glow-btn">Next ☕💕</button>
-    </div>
-
-    <!-- SLIDE 6 - SOLAR SYSTEM -->
-    <div id="slide6" class="slide">
-        <div class="solar-system">
-            <div class="orbit orbit-1"><span class="planet">☕</span></div>
-            <div class="orbit orbit-2"><span class="planet">🌞</span></div>
-            <div class="text-6xl">❤️</div>
+    <section id="intro" class="section active" style="z-index: 10;">
+        <div class="text-center z-20 relative">
+            <div class="sun-rays absolute -top-20 -right-20 opacity-70 z-10"></div>
+            <h1 class="text-7xl md:text-[9rem] premium-font morning-glow mb-8 title-font drop-shadow-2xl">Good Morning</h1>
+            <h2 class="text-5xl md:text-6xl premium-font text-teal-700 mb-12 drop-shadow-lg">Madam Ji ☕✨</h2>
+            <p class="text-2xl text-amber-800 font-semibold mb-10">Start your beautiful day with sunshine & smiles!</p>
+            <button onclick="startMorning()" class="bg-gradient-to-r from-orange-500 to-amber-400 px-14 py-6 rounded-3xl text-2xl font-bold hover:scale-110 hover:shadow-2xl transition-all duration-500 shadow-xl shadow-orange-500/30 text-white border-4 border-white/50 text-shadow-sm">
+                ☀️ Begin Your Day ✨
+            </button>
         </div>
-        <h1 class="cute-msg mt-10">Meri Duniya Laxmi! 🌍</h1>
-        <p class="sub-text">Tu meri subah, tu mera coffee, tu mera sab kuch!</p>
-        <button onclick="next()" class="glow-btn">Aur dekho ☕🚀</button>
-    </div>
+    </section>
 
-    <!-- SLIDE 7 - HEART FLOWERS -->
-    <div id="slide7" class="slide">
-        <div class="emoji-frame">💝🌹🌺</div>
-        <h1 class="cute-msg">Hamesha saath rehna Laxmi! 🥺</h1>
-        <p class="sub-text">Har subah tere saath coffee peene ka sapna!</p>
-        <button onclick="next()" class="glow-btn">Special Surprise ☕✨</button>
-    </div>
-
-    <!-- SLIDE 8 - SUNSHINE -->
-    <div id="slide8" class="slide">
-        <div class="emoji-frame">☀️🌈✨</div>
-        <h1 class="cute-msg">You're My Sunshine Laxmi! ☀️</h1>
-        <p class="sub-text">Cloudy days bhi sunny ho jate hain tere saath!</p>
-        <button onclick="next()" class="glow-btn">Final Touch ☕💖</button>
-    </div>
-
-    <!-- SLIDE 9 - PHONE CALL -->
-    <div id="slide9" class="slide">
-        <div class="emoji-frame">📞☕❤️</div>
-        <h1 class="cute-msg">Good Morning Call Laxmi? 📱</h1>
-        <div id="btnContainer" class="flex flex-wrap justify-center gap-3 mt-4">
-            <button id="yesBtn" class="glow-btn">YES! CALL ME ☕😍</button>
-            <button id="noBtn" class="px-8 py-3 bg-gray-800 rounded-full text-gray-400 mt-5">No 🥺</button>
+    <section id="wishes" class="section" style="z-index: 10;">
+        <h2 class="text-6xl md:text-7xl premium-font morning-glow mb-12 text-center drop-shadow-2xl">Morning Blessings 🌸</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 z-20 w-full max-w-4xl px-5">
+            <div class="wish-card glass-premium p-12 rounded-3xl text-center cursor-pointer hover:shadow-2xl group" onclick="showBlessing('Wishing you a day filled with joy, success, and endless positivity, Madam Ji! 🌟')">
+                <i class="fa-solid fa-sun text-6xl text-yellow-500 mb-6 morning-glow group-hover:scale-110 transition-all"></i>
+                <p class="text-gray-800 font-bold text-2xl mb-2">Blessing 1</p>
+                <p class="text-lg text-amber-700 font-medium">Sunshine & Success</p>
+            </div>
+            <div class="wish-card glass-premium p-12 rounded-3xl text-center cursor-pointer hover:shadow-2xl group" onclick="showBlessing('May every moment bring you closer to your dreams. You\'re amazing! 💖')">
+                <i class="fa-solid fa-sparkles text-6xl text-purple-500 mb-6 morning-glow group-hover:scale-110 transition-all"></i>
+                <p class="text-gray-800 font-bold text-2xl mb-2">Blessing 2</p>
+                <p class="text-lg text-amber-700 font-medium">Dreams & Magic</p>
+            </div>
+            <div class="wish-card glass-premium p-12 rounded-3xl text-center cursor-pointer hover:shadow-2xl group" onclick="showBlessing('Your grace inspires everyone around you. Have a blessed morning! 🙏✨')">
+                <i class="fa-solid fa-pray text-6xl text-pink-500 mb-6 morning-glow group-hover:scale-110 transition-all"></i>
+                <p class="text-gray-800 font-bold text-2xl mb-2">Blessing 3</p>
+                <p class="text-lg text-amber-700 font-medium">Grace & Blessings</p>
+            </div>
+            <div class="wish-card glass-premium p-12 rounded-3xl text-center cursor-pointer hover:shadow-2xl group" onclick="showBlessing('Good morning Madam Ji! May your day be as wonderful as your beautiful smile ☀️😊')">
+                <i class="fa-solid fa-heart text-6xl text-red-500 mb-6 morning-glow group-hover:scale-110 transition-all"></i>
+                <p class="text-gray-800 font-bold text-2xl mb-2">Blessing 4</p>
+                <p class="text-lg text-amber-700 font-medium">Love & Happiness</p>
+            </div>
         </div>
-    </div>
+        <button id="btn-sunrise" onclick="sunriseMagic()" class="mt-16 bg-gradient-to-r from-orange-500 via-amber-400 to-yellow-500 px-12 py-5 rounded-3xl glass-premium text-white text-2xl font-bold shadow-2xl hidden hover:scale-105 transition-all border-2 border-white/50">
+            🌅 Sunrise Magic Awaits!
+        </button>
 
-    <!-- SLIDE 10 - FINAL -->
-    <div id="slide10" class="slide">
-        <div class="emoji-frame">🎉☕🥳</div>
-        <h1 class="cute-msg">Yay! Call mat bhoolna Laxmi! 📱☕</h1>
-        <p class="sub-text">Ab coffee bana aur call kar de apni jaan ko!</p>
-        <button onclick="playSurprise()" class="glow-btn animate-bounce">FINAL SURPRISE 🎁☕</button>
-    </div>
+        <div id="blessing-modal" class="fixed inset-0 bg-white/95 backdrop-blur-sm hidden items-center justify-center z-50 px-6">
+            <div class="glass-premium p-16 rounded-3xl text-center max-w-2xl w-full shadow-2xl border border-yellow-200/50">
+                <div id="blessing-text" class="text-3xl md:text-4xl premium-font leading-relaxed text-slate-800 mb-8 min-h-[120px] flex items-center justify-center"></div>
+                <button onclick="closeBlessing()" class="bg-gradient-to-r from-orange-500 to-amber-400 text-white px-12 py-4 rounded-2xl font-bold text-xl hover:scale-105 shadow-xl transition-all border border-white/30">
+                    ✨ Continue Journey
+                </button>
+            </div>
+        </div>
+    </section>
 
-    <div id="videoLayer">
-        <video id="vPlayer" playsinline src="video1.mp4"></video>
-    </div>
+    <section id="sunrise" class="section relative overflow-hidden" style="z-index: 10;">
+        <div class="absolute inset-0 bg-gradient-to-b from-orange-400 via-yellow-300 to-pink-200 animate-pulse"></div>
+        <div class="text-center z-20 relative pt-20">
+            <h1 class="text-7xl md:text-8xl premium-font morning-glow mb-8 drop-shadow-2xl">Beautiful Day</h1>
+            <h2 class="text-4xl md:text-5xl premium-font text-white/90 mb-12 drop-shadow-lg">Ahead of You ☀️</h2>
+            <p class="text-2xl text-white/95 font-semibold mb-12 max-w-2xl mx-auto">Embrace this morning with open arms, Madam Ji. Your day is going to be extraordinary!</p>
+            <button onclick="completeMorning()" class="bg-white/90 backdrop-blur-sm px-14 py-6 rounded-3xl text-2xl font-bold text-orange-600 hover:scale-110 hover:shadow-2xl transition-all duration-500 shadow-2xl border-4 border-white/50">
+                🌟 Complete Greeting ✨
+            </button>
+        </div>
+    </section>
 
     <script>
-        let step = 1;
-        const music = document.getElementById('bgMusic');
-        
-        // Stars + Floating Emojis
-        const starContainer = document.getElementById('stars-container');
-        const frag = document.createDocumentFragment();
-        
-        // Stars
-        for(let i=0; i<120; i++) {
-            const s = document.createElement('div');
-            s.className = 'star';
-            const size = Math.random() * 2.5 + 1 + 'px';
-            s.style.width = size; s.style.height = size;
-            s.style.left = Math.random() * 100 + 'vw';
-            s.style.top = Math.random() * 100 + 'vh';
-            s.style.setProperty('--dur', (Math.random() * 2.5 + 1) + 's');
-            frag.appendChild(s);
-        }
-        
-        // Floating emojis
-        const floatEmojis = ['☕', '🌸', '☀️', '💖', '🌺'];
-        for(let i=0; i<30; i++) {
-            const emoji = document.createElement('div');
-            emoji.className = 'floating-emojis';
-            emoji.textContent = floatEmojis[Math.floor(Math.random()*floatEmojis.length)];
-            emoji.style.left = Math.random() * 100 + 'vw';
-            emoji.style.top = '100vh';
-            emoji.style.animationDelay = Math.random() * 4 + 's';
-            frag.appendChild(emoji);
-        }
-        starContainer.appendChild(frag);
+        let music = document.getElementById('bgmusic');
+        let blessingsRead = 0;
+        let isTransitioning = false;
 
-        function startApp() { 
-            music.play().catch(() => {}); 
-            next(); 
+        function startMorning() {
+            music.play().catch(e => console.log("Audio autoplay blocked"));
+            nextSection('wishes');
+            createFloatingElements();
         }
 
-        function next() {
-            const current = document.getElementById('slide' + step);
-            const nextS = document.getElementById('slide' + (step + 1));
-            if(current) {
+        function nextSection(nextId) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
+            const current = document.querySelector('.section.active');
+            const next = document.getElementById(nextId);
+
+            gsap.to(current, {opacity: 0, scale: 0.95, duration: 0.6, ease: "power2.inOut", onComplete: () => {
                 current.classList.remove('active');
-                setTimeout(() => current.style.display = 'none', 400);
-            }
-            if(nextS) {
-                step++;
-                nextS.style.display = 'flex';
-                void nextS.offsetWidth;
-                nextS.classList.add('active');
-            }
+                next.classList.add('active');
+                gsap.fromTo(next, {opacity: 0, scale: 0.9, y: 50}, {opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "back.out(1.7)", onComplete: () => {
+                    isTransitioning = false;
+                }});
+            }});
         }
 
-        // YES BUTTON
-        document.getElementById('yesBtn').onclick = () => {
-            setTimeout(next, 200);
-        };
-
-        // NO BUTTON TRAP
-        function trapNo() {
-            document.getElementById('noBtn').style.display = 'none';
-            const container = document.getElementById('btnContainer');
+        function showBlessing(text) {
+            document.getElementById('blessing-text').innerHTML = text;
+            const modal = document.getElementById('blessing-modal');
+            modal.style.display = 'flex';
+            gsap.fromTo(modal.querySelector('.glass-premium'), 
+                {scale: 0.3, opacity: 0, y: 100}, 
+                {scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.7)"});
+            blessingsRead++;
+            if (blessingsRead >= 2) document.getElementById('btn-sunrise').classList.remove('hidden');
             
-            for(let i = 0; i < 5; i++) {
-                const btn = document.createElement('button');
-                btn.className = 'glow-btn';
-                btn.innerHTML = 'YES! CALL ME ☕💖';
-                btn.onclick = () => setTimeout(next, 200);
-                container.appendChild(btn);
+            confetti({
+                particleCount: 80,
+                spread: 60,
+                origin: { y: 0.7 },
+                colors: ['#FFD700', '#FFA500', '#FF6B6B', '#4ECDC4']
+            });
+        }
+
+        function closeBlessing() {
+            gsap.to(document.getElementById('blessing-modal').querySelector('.glass-premium'), 
+                {scale: 0.8, opacity: 0, y: -50, duration: 0.3, ease: "power2.in", 
+                  onComplete: () => document.getElementById('blessing-modal').style.display = 'none'});
+        }
+
+        function sunriseMagic() {
+            confetti({
+                particleCount: 200,
+                spread: 90,
+                origin: { y: 0.4 },
+                colors: ['#FFD700', '#FF8C00', '#FF1493', '#00CED1', '#98FB98']
+            });
+            nextSection('sunrise');
+        }
+
+        function completeMorning() {
+            // Final celebration
+            for(let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 100,
+                        angle: 60 + i*6,
+                        spread: 55,
+                        origin: { x: i/10 },
+                        colors: ['#FF6B6B', '#4ECDC4', '#FFE66D', '#FF8E8E']
+                    });
+                }, i * 200);
+            }
+            
+            gsap.to('body', {
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                duration: 2,
+                ease: 'power2.inOut',
+                onComplete: () => {
+                    alert('🌅 Good Morning Madam Ji! Have a truly wonderful day ahead! ✨');
+                }
+            });
+        }
+
+        function createFloatingElements() {
+            const elements = ['🌸', '☕', '✨', '🌞', '💫', '🌼'];
+            for(let i = 0; i < 15; i++) {
+                let el = document.createElement('div');
+                el.innerHTML = elements[Math.floor(Math.random() * elements.length)];
+                el.style.cssText = `
+                    position: fixed; font-size: ${Math.random()*20 + 15}px; 
+                    left: ${Math.random()*100}vw; top: ${Math.random()*100 + 100}vh;
+                    animation: floatUp ${Math.random()*5 + 8}s linear infinite;
+                    pointer-events: none; z-index: 5; opacity: 0.7;
+                    animation-delay: ${Math.random()*3}s;
+                `;
+                document.body.appendChild(el);
             }
         }
-        document.getElementById('noBtn').onclick = trapNo;
 
-        // Hold button logic
-        let hVal = 0, hInt;
-        const hBtn = document.getElementById('holdBtn'), hProg = document.getElementById('holdProgress'), pHeart = document.getElementById('pulseHeart');
-        
-        const startH = (e) => { 
-            e.preventDefault(); 
-            pHeart.style.transform = 'scale(1.6)';
-            hInt = setInterval(() => { 
-                hVal += 2.8; 
-                hProg.style.width = hVal + '%'; 
-                if(hVal >= 100) { clearInterval(hInt); next(); } 
-            }, 28); 
-        };
-        const endH = () => { 
-            clearInterval(hInt); 
-            hVal = 0; 
-            hProg.style.width = '0%'; 
-            pHeart.style.transform = 'scale(1)'; 
-        };
-        
-        hBtn.addEventListener('touchstart', startH);
-        hBtn.addEventListener('mousedown', startH);
-        window.addEventListener('touchend', endH);
-        window.addEventListener('mouseup', endH);
-
-        function playSurprise() {
-            music.pause();
-            const layer = document.getElementById('videoLayer');
-            layer.style.display = 'flex';
-            const v = document.getElementById('vPlayer');
-            v.play();
-            v.onended = () => location.reload();
-        }
+        // CSS for floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUp {
+                0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.3; }
+                10% { opacity: 1; }
+                90% { opacity: 1; }
+                100% { transform: translateY(-150vh) translateX(${Math.random()*200 - 100}px) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
-    </html>
+</html>
