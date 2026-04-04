@@ -2,462 +2,303 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Cutee ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Good Morning ☕ My Kuchupuchu🌺</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap');
-
-        :root {
-            --pink: #ff85a2;
-            --soft-pink: #ffb6c1;
-            --white: #ffffff;
-            --glow: 0 0 10px rgba(255, 133, 162, 0.6);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap');
+        
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
         body {
+            background: radial-gradient(circle at center, #ff6b35 0%, #f7931e 50%, #000000 100%);
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ffffff 0%, #ffe4e8 100%);
-            height: 100vh;
-            overflow: hidden;
-            color: #444;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+            overflow: hidden; height: 100vh; width: 100vw;
+            color: #ffffff; user-select: none; touch-action: manipulation;
         }
 
-        /* Floating Hearts Background */
-        .bg-hearts {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
+        #stars-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+        .star { 
+            position: absolute; background: #fff176; border-radius: 50%; 
+            animation: realTwinkle var(--dur) infinite ease-in-out;
+            will-change: opacity, transform;
+            box-shadow: 0 0 5px #ffd54f;
+        }
+        @keyframes realTwinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.7); }
+            50% { opacity: 1; transform: scale(1.3); }
         }
 
-        .heart-float {
-            position: absolute;
-            color: var(--soft-pink);
-            opacity: 0.6;
-            animation: floatUp 6s linear infinite;
+        .header-tag {
+            position: fixed; top: 15px; width: 100%; text-align: center;
+            z-index: 100; font-family: 'Dancing Script', cursive;
+            color: #ffeb3b; font-size: 1.8rem;
+            text-shadow: 0 0 15px rgba(255,235,59,0.8);
         }
 
+        .slide {
+            display: none; position: fixed; inset: 0; width: 100%; height: 100%;
+            align-items: center; justify-content: center; flex-direction: column;
+            opacity: 0; z-index: 20; padding: 25px; text-align: center;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: scale(0.98);
+        }
+        .slide.active { display: flex; opacity: 1; transform: scale(1); }
+
+        .cute-msg { 
+            font-family: 'Dancing Script', cursive; color: #ffffff; 
+            text-shadow: 0 0 20px #ff6b35, 3px 3px 8px rgba(0,0,0,0.8); 
+            font-size: clamp(2.5rem, 9vw, 3.5rem); 
+            margin-top: 15px; font-weight: 700; line-height: 1.2;
+        }
+        .sub-text { color: #fffde7; font-weight: 600; font-size: 1.2rem; margin-top: 12px; max-width: 350px; text-shadow: 1px 1px 6px #000; }
+        
+        .emoji-frame { 
+            width: 280px; height: 280px; border-radius: 40px; 
+            border: 6px solid #ffeb3b; box-shadow: 0 0 40px rgba(255,235,59,0.7); 
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(0,0,0,0.3));
+            font-size: 8rem; position: relative; overflow: hidden;
+        }
+        .emoji-frame::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: sparkle 3s infinite;
+        }
+        @keyframes sparkle { 0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0.5; } 50% { transform: scale(1.2) rotate(180deg); opacity: 1; } }
+
+        .glow-btn { 
+            background: linear-gradient(45deg, #ff6b35, #ff8f00, #ffc107); 
+            padding: 16px 40px; border-radius: 50px; font-weight: 700; 
+            box-shadow: 0 0 25px rgba(255,152,0,0.5); 
+            cursor: pointer; border: none; color: #1a1a1a; font-size: 1.15rem;
+            margin-top: 25px; transition: 0.3s;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+        }
+        .glow-btn:active { transform: scale(0.92); }
+
+        .solar-system { position: relative; width: 300px; height: 300px; display: flex; align-items: center; justify-content: center; }
+        .orbit { position: absolute; border: 3px solid rgba(255,235,59,0.4); border-radius: 50%; animation: spin linear infinite; }
+        .orbit-1 { width: 200px; height: 200px; animation-duration: 7s; }
+        .orbit-2 { width: 280px; height: 280px; animation-duration: 12s; animation-direction: reverse; }
+        .planet { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); font-size: 28px; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .hold-container { width: 300px; height: 20px; background: rgba(255,255,255,0.15); border-radius: 12px; margin-top: 30px; overflow: hidden; border: 3px solid #ffeb3b; }
+        #holdProgress { height: 100%; background: linear-gradient(90deg, #ff6b35, #ffc107); width: 0%; transition: width 0.1s linear; }
+
+        #videoLayer { display: none; position: fixed; inset: 0; background: #1a1a1a; z-index: 1000; align-items: center; justify-content: center; }
+        video { width: 100%; height: 100%; object-fit: contain; }
+
+        .floating-emojis {
+            position: absolute; font-size: 2rem; animation: floatUp 4s infinite linear;
+        }
         @keyframes floatUp {
-            0% { transform: translateY(110vh) scale(0); opacity: 0; }
-            50% { opacity: 0.6; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
-        }
-
-        /* Music Control */
-        .music-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1001;
-            background: white;
-            padding: 10px;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            cursor: pointer;
-        }
-
-        /* Top Bar */
-        .top-bar {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 15px;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .top-bar a {
-            color: var(--pink);
-            text-decoration: none;
-            font-weight: 600;
-            text-shadow: var(--glow);
-        }
-
-        /* Container & Pages */
-        .container {
-            width: 90%;
-            max-width: 400px;
-            height: 80vh;
-            position: relative;
-            z-index: 10;
-        }
-
-        .page {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            animation: fadeIn 0.8s ease-in-out;
-        }
-
-        .active { display: flex; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1, h2 {
-            font-family: 'Dancing Script', cursive;
-            color: var(--pink);
-            margin-bottom: 20px;
-            text-shadow: var(--glow);
-        }
-
-        .message {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #555;
-        }
-
-        .glow-text {
-            color: var(--pink);
-            text-shadow: 0 0 8px rgba(255, 133, 162, 0.4);
-        }
-
-        /* Buttons */
-        .btn {
-            background: var(--pink);
-            color: white;
-            border: none;
-            padding: 12px 35px;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 133, 162, 0.4);
-        }
-
-        .btn:hover { transform: scale(1.05); background: #ff6b8d; }
-
-        /* Shayari Box */
-        .shayari-container {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            max-width: 320px;
-        }
-
-        .shayari-line {
-            display: block;
-            margin: 10px 0;
-            opacity: 0;
-            transform: translateX(-10px);
-            transition: 0.5s;
-            font-size: 0.95rem;
-            font-style: italic;
-        }
-
-        .shayari-line.visible { opacity: 1; transform: translateX(0); }
-
-        /* Gauge */
-        .gauge-wrap { margin: 20px 0; position: relative; }
-        .meter {
-            width: 150px; height: 150px;
-            border-radius: 50%;
-            border: 8px solid #f0f0f0;
-            border-top: 8px solid var(--pink);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--pink);
-            animation: spin 2s infinite linear;
-        }
-
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        /* Final Buttons */
-        .choice-btns { display: flex; gap: 20px; margin-top: 30px; position: relative; width: 100%; justify-content: center; z-index: 10; }
-        #noBtn { position: absolute; transition: 0.3s ease; }
-
-        /* Scratch Card Overlay */
-        #scratch-page {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            animation: fadeIn 1s;
-        }
-
-        .scratch-container {
-            width: 300px;
-            height: 150px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        #scratch-canvas {
-            position: absolute;
-            top: 0; left: 0;
-            cursor: crosshair;
-            z-index: 2;
-        }
-
-        .scratch-content {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1;
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem;
-            color: var(--pink);
-            text-shadow: var(--glow);
+            0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+            100% { opacity: 0; transform: translateY(-200px) rotate(360deg); }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-hearts" id="hearts-bg"></div>
+    <div class="header-tag">Hey annu (anushka) good morning bachhu</div>
+    <audio id="bgMusic" loop src="good-morning.mp3" preload="auto"></audio>
+    <div id="stars-container"></div>
 
-    <div class="top-bar">
-        <a href="https://instagram.com/smss1708" target="_blank">Follow on Insta - @smss1708</a>
+    <!-- SLIDE 1 - SUN RISING -->
+    <div id="slide1" class="slide active">
+        <div class="emoji-frame" id="sunFrame1">☀️</div>
+        <h1 class="cute-msg">Good Morning ☕✨</h1>
+        <p class="sub-text">Uth gayi? Coffee ka time ho gaya!</p>
+        <button onclick="startApp()" class="glow-btn">Start My Day ☕❤️</button>
     </div>
 
-    <div class="music-control" onclick="toggleMusic()">
-        <span id="music-icon">🎵</span>
+    <!-- SLIDE 2 - COFFEE HEART -->
+    <div id="slide2" class="slide">
+        <div class="emoji-frame">☕💖</div>
+        <h1 class="cute-msg">Subah utthe hi sun ☀️ aane se pehle aapki yad aane lagti hai! 🌅</h1>
+        <p class="sub-text">Aapke bina coffee bhi fika lagta hai bachhu!</p>
+        <button onclick="next()" class="glow-btn">Aur dekho ☕💕</button>
     </div>
 
-    <audio id="bgMusic" loop>
-        <source src="tere-liye.mp3" type="audio/mpeg">
-    </audio>
+    <!-- SLIDE 3 - FLOWERS -->
+    <div id="slide3" class="slide">
+        <div class="emoji-frame">🌸🌺🌻</div>
+        <h1 class="cute-msg">Sweetest Smile! 😍</h1>
+        <p class="sub-text">Teri smile se din ban jata hai mera!</p>
+        <button onclick="next()" class="glow-btn">Continue ☕✨</button>
+    </div>
 
-    <div class="container">
-        <div class="page active" id="p1">
-            <img src="gif1.gif" alt="Cute GIF" style="width: 200px; border-radius: 20px; margin-bottom: 20px;">
-            <h1 class="typing">Hii Cutee 💖</h1>
-            <p class="message">I want to say something very special to you...</p>
-            <button class="btn" onclick="nextPage(2)">Continue ❤️</button>
+    <!-- SLIDE 4 - HOLD BUTTON -->
+    <div id="slide4" class="slide">
+        <div class="text-8xl mb-6 transition-transform duration-300" id="pulseHeart">☕💖</div>
+        <h1 class="text-2xl font-bold">Kitna miss kiya rat ko ?</h1>
+        <div class="hold-container"><div id="holdProgress"></div></div>
+        <button id="holdBtn" class="glow-btn select-none">PRESS & HOLD TO FEEL ☕</button>
+    </div>
+
+    <!-- SLIDE 5 - COFFEE CUPS -->
+    <div id="slide5" class="slide">
+        <div class="emoji-frame">☕☕💕</div>
+        <h1 class="cute-msg">Coffee & Cuddles! 🤗</h1>
+        <p class="sub-text">Yeh combination perfect hai jaise hum!</p>
+        <button onclick="next()" class="glow-btn">Next ☕💕</button>
+    </div>
+
+    <!-- SLIDE 6 - SOLAR SYSTEM -->
+    <div id="slide6" class="slide">
+        <div class="solar-system">
+            <div class="orbit orbit-1"><span class="planet">☕</span></div>
+            <div class="orbit orbit-2"><span class="planet">🌞</span></div>
+            <div class="text-6xl">❤️</div>
         </div>
+        <h1 class="cute-msg mt-10">Anushka bachhu 🤌! 🌍</h1>
+        <p class="sub-text">Tu meri subah, tu mera coffee, tu mera sab kuch!</p>
+        <button onclick="next()" class="glow-btn">Aur dekho ☕🚀</button>
+    </div>
 
-        <div class="page" id="p2"> <h1>Kab se kuch kehna tha...</h1> <button class="btn" onclick="nextPage(3)">Continue ❤️</button> </div>
-        <div class="page" id="p3"> <h1>Par shayad himmat nahi ho pa rahi thi...</h1> <button class="btn" onclick="nextPage(4)">Continue ❤️</button> </div>
-        <div class="page" id="p4"> <h1 class="glow-text">Tum sabse alag ho... ✨</h1> <button class="btn" onclick="nextPage(5)">Continue ❤️</button> </div>
-        <div class="page" id="p5"> <h1 class="glow-text">Bahut zyada special ho... 🌸</h1> <button class="btn" onclick="nextPage(6)">Continue ❤️</button> </div>
-        <div class="page" id="p6"> <h1>Aur shayad...</h1> <button class="btn" onclick="nextPage(7)">Continue ❤️</button> </div>
-        <div class="page" id="p7"> <h1 class="glow-text">Mujhe tum pasand ho 💖</h1> <button class="btn" onclick="nextPage(8)">Continue ❤️</button> </div>
-        <div class="page" id="p8"> <h2 class="glow-text">Bahut zyada... 🥀</h2> <button class="btn" onclick="nextPage(9)">Continue ❤️</button> </div>
+    <!-- SLIDE 7 - HEART FLOWERS -->
+    <div id="slide7" class="slide">
+        <div class="emoji-frame">💝🌹🌺</div>
+        <h1 class="cute-msg">Hamesha saath rehna! 🥺</h1>
+        <p class="sub-text">Har subah tere saath coffee peene ka sapna!</p>
+        <button onclick="next()" class="glow-btn">Special Surprise ☕✨</button>
+    </div>
 
-        <div class="page" id="p9">
-            <div class="shayari-container">
-                <span class="shayari-line">Tum bologi dhimi aavaz me</span>
-                <span class="shayari-line">fir bhi baat pakad lunga</span>
-                <span class="shayari-line">gale nahi lagaunga tumko</span>
-                <span class="shayari-line">bas haath pakad lunga...</span>
-                <br>
-                <span class="shayari-line">aur is thodi si mohabbat ki aag me</span>
-                <span class="shayari-line">zindagi bhar jalna hai</span>
-                <span class="shayari-line">hotel me nahi jana mujhko</span>
-                <span class="shayari-line">sadak pe saath chalna hai...</span>
-                <br>
-                <span class="shayari-line">fir bhi is duniya se nikal ke</span>
-                <span class="shayari-line">mujhme kho sakti ho kya?</span>
-                <span class="shayari-line">jyada ki chah nahi mujhko</span>
-                <span class="shayari-line">thodi si meri ho sakti ho kya 💯</span>
-            </div>
-            <button class="btn" style="margin-top: 20px;" onclick="nextPage(10)">Continue ❤️</button>
-        </div>
+    <!-- SLIDE 8 - SUNSHINE -->
+    <div id="slide8" class="slide">
+        <div class="emoji-frame">☀️🌈✨</div>
+        <h1 class="cute-msg">You're My Kuchupuchu🌺! ☀️</h1>
+        <p class="sub-text">Cloudy days bhi sunny ho jate hain tere saath!</p>
+        <button onclick="next()" class="glow-btn">Final Touch ☕💖</button>
+    </div>
 
-        <div class="page" id="p10">
-            <h1 id="meterTitle">Calculating love... 💖</h1>
-            <div class="gauge-wrap">
-                <div class="meter" id="loveMeter">0%</div>
-            </div>
-            <div id="meterResult" style="display:none;">
-                <h2 class="glow-text">100% Perfect Match 💞</h2>
-                <p>Our hearts beat as one</p>
-                <div style="font-size: 50px; margin-top: 10px;">🤗</div>
-            </div>
-            <button class="btn" id="meterBtn" onclick="runMeter()" style="margin-top: 20px;">Check Compatibility</button>
-        </div>
-
-        <div class="page" id="p11">
-            <h1 class="glow-text" style="font-size: 2.5rem;">Will you be mine? 💖</h1>
-            <div class="choice-btns">
-                <button class="btn" id="yesBtn" style="padding: 15px 50px; font-size: 1.2rem;" onclick="showScratchCard()">YES ❤️</button>
-                <button class="btn" id="noBtn" onmouseover="moveNo()" style="background: #ccc; box-shadow: none;">NO 💔</button>
-            </div>
+    <!-- SLIDE 9 - PHONE CALL -->
+    <div id="slide9" class="slide">
+        <div class="emoji-frame">📞☕❤️</div>
+        <h1 class="cute-msg">Good Morning Call? 📱</h1>
+        <div id="btnContainer" class="flex flex-wrap justify-center gap-3 mt-4">
+            <button id="yesBtn" class="glow-btn">YES! CALL ME ☕😍</button>
+            <button id="noBtn" class="px-8 py-3 bg-gray-800 rounded-full text-gray-400 mt-5">No 🥺</button>
         </div>
     </div>
 
-    <div id="scratch-page">
-        <h1 class="glow-text" style="margin-bottom: 30px;">A Little Surprise For You...</h1>
-        <div class="scratch-container">
-            <div class="scratch-content">I Love You ❤️</div>
-            <canvas id="scratch-canvas" width="300" height="150"></canvas>
-        </div>
-        <p style="margin-top: 20px; color: #888; font-size: 0.9rem;">Scratch the card gently 👆</p>
+    <!-- SLIDE 10 - FINAL -->
+    <div id="slide10" class="slide">
+        <div class="emoji-frame">🎉☕🥳</div>
+        <h1 class="cute-msg">Yay! Call mat bhoolna! 📱☕</h1>
+        <p class="sub-text">Ab coffee bana aur call kar de apni jaan ko!</p>
+        <button onclick="playSurprise()" class="glow-btn animate-bounce">FINAL SURPRISE 🎁☕</button>
+    </div>
+
+    <div id="videoLayer">
+        <video id="vPlayer" playsinline src="video1.mp4"></video>
     </div>
 
     <script>
-        // Page Navigation
-        function nextPage(n) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('p' + n).classList.add('active');
-            
-            if (n === 9) showShayari();
-            if (document.getElementById('bgMusic').paused) {
-                document.getElementById('bgMusic').play().catch(e => console.log("Music needs interaction"));
+        let step = 1;
+        const music = document.getElementById('bgMusic');
+        
+        // Stars + Floating Emojis
+        const starContainer = document.getElementById('stars-container');
+        const frag = document.createDocumentFragment();
+        
+        // Stars
+        for(let i=0; i<120; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            const size = Math.random() * 2.5 + 1 + 'px';
+            s.style.width = size; s.style.height = size;
+            s.style.left = Math.random() * 100 + 'vw';
+            s.style.top = Math.random() * 100 + 'vh';
+            s.style.setProperty('--dur', (Math.random() * 2.5 + 1) + 's');
+            frag.appendChild(s);
+        }
+        
+        // Floating emojis
+        const floatEmojis = ['☕', '🌸', '☀️', '💖', '🌺'];
+        for(let i=0; i<30; i++) {
+            const emoji = document.createElement('div');
+            emoji.className = 'floating-emojis';
+            emoji.textContent = floatEmojis[Math.floor(Math.random()*floatEmojis.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.top = '100vh';
+            emoji.style.animationDelay = Math.random() * 4 + 's';
+            frag.appendChild(emoji);
+        }
+        starContainer.appendChild(frag);
+
+        function startApp() { 
+            music.play().catch(() => {}); 
+            next(); 
+        }
+
+        function next() {
+            const current = document.getElementById('slide' + step);
+            const nextS = document.getElementById('slide' + (step + 1));
+            if(current) {
+                current.classList.remove('active');
+                setTimeout(() => current.style.display = 'none', 400);
+            }
+            if(nextS) {
+                step++;
+                nextS.style.display = 'flex';
+                void nextS.offsetWidth;
+                nextS.classList.add('active');
             }
         }
 
-        // Music Toggle
-        function toggleMusic() {
-            const music = document.getElementById('bgMusic');
-            const icon = document.getElementById('music-icon');
-            if (music.paused) { music.play(); icon.innerHTML = "⏸️"; } 
-            else { music.pause(); icon.innerHTML = "🎵"; }
-        }
+        // YES BUTTON
+        document.getElementById('yesBtn').onclick = () => {
+            setTimeout(next, 200);
+        };
 
-        // Floating Hearts
-        function createHeart(isSpecial = false) {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-float');
-            heart.innerHTML = '💖';
-            heart.style.left = Math.random() * 100 + 'vw';
+        // NO BUTTON TRAP
+        function trapNo() {
+            document.getElementById('noBtn').style.display = 'none';
+            const container = document.getElementById('btnContainer');
             
-            if(isSpecial) {
-                // Bigger, faster hearts for scratch reveal
-                heart.style.fontSize = Math.random() * 30 + 20 + 'px'; 
-                heart.style.animationDuration = Math.random() * 2 + 1 + 's';
-                heart.style.zIndex = "3000";
-            } else {
-                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-                heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            for(let i = 0; i < 5; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'glow-btn';
+                btn.innerHTML = 'YES! CALL ME ☕💖';
+                btn.onclick = () => setTimeout(next, 200);
+                container.appendChild(btn);
             }
-            
-            document.getElementById('hearts-bg').appendChild(heart);
-            setTimeout(() => heart.remove(), 5000);
         }
-        setInterval(() => createHeart(false), 300); // Background hearts
+        document.getElementById('noBtn').onclick = trapNo;
 
-        // Shayari Animation
-        function showShayari() {
-            const lines = document.querySelectorAll('.shayari-line');
-            lines.forEach((line, i) => {
-                setTimeout(() => { line.classList.add('visible'); }, i * 1500);
-            });
-        }
+        // Hold button logic
+        let hVal = 0, hInt;
+        const hBtn = document.getElementById('holdBtn'), hProg = document.getElementById('holdProgress'), pHeart = document.getElementById('pulseHeart');
+        
+        const startH = (e) => { 
+            e.preventDefault(); 
+            pHeart.style.transform = 'scale(1.6)';
+            hInt = setInterval(() => { 
+                hVal += 2.8; 
+                hProg.style.width = hVal + '%'; 
+                if(hVal >= 100) { clearInterval(hInt); next(); } 
+            }, 28); 
+        };
+        const endH = () => { 
+            clearInterval(hInt); 
+            hVal = 0; 
+            hProg.style.width = '0%'; 
+            pHeart.style.transform = 'scale(1)'; 
+        };
+        
+        hBtn.addEventListener('touchstart', startH);
+        hBtn.addEventListener('mousedown', startH);
+        window.addEventListener('touchend', endH);
+        window.addEventListener('mouseup', endH);
 
-        // Love Meter Logic
-        function runMeter() {
-            let count = 0;
-            const meter = document.getElementById('loveMeter');
-            const btn = document.getElementById('meterBtn');
-            btn.style.display = 'none';
-            
-            const interval = setInterval(() => {
-                count += Math.floor(Math.random() * 5) + 1;
-                if (count >= 100) {
-                    count = 100;
-                    clearInterval(interval);
-                    document.getElementById('meterTitle').style.display = 'none';
-                    document.getElementById('meterResult').style.display = 'block';
-                    meter.style.animation = 'none';
-                    setTimeout(() => nextPage(11), 3000);
-                }
-                meter.innerText = count + '%';
-            }, 50);
-        }
-
-        // Run Away No Button
-        function moveNo() {
-            const btn = document.getElementById('noBtn');
-            // Restrict movement within reasonable bounds
-            const x = Math.random() * 200 - 100;
-            const y = Math.random() * 200 - 100;
-            btn.style.transform = `translate(${x}px, ${y}px)`;
-        }
-
-        // --- SCRATCH CARD LOGIC ---
-        let specialHeartInterval;
-
-        function showScratchCard() {
-            document.getElementById('scratch-page').style.display = 'flex';
-            initScratchCard();
-        }
-
-        function initScratchCard() {
-            const canvas = document.getElementById('scratch-canvas');
-            const ctx = canvas.getContext('2d');
-            
-            // Fill canvas with scratch layer (pink gradient)
-            const grad = ctx.createLinearGradient(0, 0, 300, 150);
-            grad.addColorStop(0, '#ff85a2');
-            grad.addColorStop(1, '#ffb6c1');
-            ctx.fillStyle = grad;
-            ctx.fillRect(0, 0, 300, 150);
-            
-            // Add some "scratch here" text on canvas
-            ctx.font = '20px Poppins';
-            ctx.fillStyle = 'white';
-            ctx.textAlign = 'center';
-            ctx.fillText('Scratch Me ❤️', 150, 80);
-
-            let isDrawing = false;
-            let scratchedPixels = 0;
-            const totalPixels = 300 * 150;
-
-            function scratch(e) {
-                if (!isDrawing) return;
-                
-                const rect = canvas.getBoundingClientRect();
-                const x = (e.clientX || e.touches[0].clientX) - rect.left;
-                const y = (e.clientY || e.touches[0].clientY) - rect.top;
-                
-                ctx.globalCompositeOperation = 'destination-out';
-                ctx.beginPath();
-                ctx.arc(x, y, 20, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Start special hearts when scratching
-                if(!specialHeartInterval) {
-                    specialHeartInterval = setInterval(() => createHeart(true), 100);
-                }
-            }
-
-            function stopDrawing() {
-                isDrawing = false;
-                if(specialHeartInterval) {
-                    clearInterval(specialHeartInterval);
-                    specialHeartInterval = null;
-                }
-            }
-
-            canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
-            canvas.addEventListener('mousemove', scratch);
-            canvas.addEventListener('mouseup', stopDrawing);
-            canvas.addEventListener('mouseleave', stopDrawing);
-
-            canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); e.preventDefault(); });
-            canvas.addEventListener('touchmove', (e) => { scratch(e); e.preventDefault(); });
-            canvas.addEventListener('touchend', stopDrawing);
+        function playSurprise() {
+            music.pause();
+            const layer = document.getElementById('videoLayer');
+            layer.style.display = 'flex';
+            const v = document.getElementById('vPlayer');
+            v.play();
+            v.onended = () => location.reload();
         }
     </script>
 </body>
