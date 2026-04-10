@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Good Morning, Baby ☀️</title>
+    <title>Good Morning baby ☀️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap');
         
@@ -11,13 +11,13 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            /* White Romantic Theme: Soft pearls and white silk vibes */
-            background: radial-gradient(circle, #ffffff 0%, #f7f7f7 100%);
-            color: #333;
+            /* White Romantic Theme: Very light grey/white background */
+            background: radial-gradient(circle, #ffffff 0%, #f9f9f9 100%);
+            color: #2d2d2d;
             overflow-x: hidden;
         }
 
-        /* Hard Glowing Insta ID */
+        /* Fixed Insta ID - Changed to Dark Pink with soft shadow for clarity */
         .insta-tag {
             position: fixed;
             top: 15px;
@@ -25,9 +25,8 @@
             transform: translateX(-50%);
             z-index: 2000;
             font-weight: 900;
-            color: #fff;
-            /* Hard Glow Effect */
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0055, 0 0 30px #ff0055, 0 0 40px #ff0055;
+            color: #ff0055; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
             font-size: 16px;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -35,15 +34,15 @@
 
         .header {
             position: fixed; top: 50px; width: 100%; z-index: 1000;
-            background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
             padding: 12px; text-align: center;
             font-family: 'Dancing Script', cursive; font-size: 26px;
-            color: #ff0055; border-bottom: 1px solid rgba(0,0,0,0.05);
+            color: #d6004a; border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* White Petals/Hearts falling */
+        /* Pink Petals */
         .petals-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
-        .petal { position: absolute; background: rgba(255, 182, 193, 0.4); border-radius: 50%; animation: floatPetal 8s linear infinite; }
+        .petal { position: absolute; background: rgba(255, 105, 180, 0.3); border-radius: 50%; animation: floatPetal 8s linear infinite; }
         
         @keyframes floatPetal {
             0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0.8; }
@@ -59,19 +58,19 @@
         
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Elegant White Frames */
+        /* Elegant White Frames with darker shadow for pop */
         .photo-frame { 
             width: 280px; height: 350px; background-size: cover; 
             background-position: center; border-radius: 15px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1); margin-bottom: 30px; 
-            border: 10px solid #fff; outline: 1px solid #eee;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 30px; 
+            border: 8px solid #fff;
         }
 
-        /* Hard Glow Text for Good Morning Messages */
+        /* MAIN TEXT: Changed from White to Deep Pink/Dark Grey for visibility */
         .message { 
             font-family: 'Dancing Script', cursive; font-size: 32px; 
-            color: #fff; 
-            text-shadow: 0 0 5px #ff4d94, 0 0 10px #ff4d94, 0 0 20px #ff4d94;
+            color: #b3003b; /* Deep Rose Pink */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
             line-height: 1.4; max-width: 90%;
             font-weight: bold;
         }
@@ -84,20 +83,22 @@
         .scratch-canvas { position: absolute; top: 0; left: 0; z-index: 20; touch-action: none; }
 
         .nav-bar { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; gap: 30px; }
+        
+        /* Buttons: Solid Pink with White Text for clarity */
         .btn { 
-            background: #fff; color: #ff0055; border: 2px solid #ff0055; padding: 10px 25px; 
+            background: #ff0055; color: #fff; border: none; padding: 12px 28px; 
             border-radius: 50px; cursor: pointer; font-weight: bold; font-family: 'Poppins';
-            transition: 0.3s; box-shadow: 0 5px 15px rgba(255, 0, 85, 0.2);
+            transition: 0.3s; box-shadow: 0 5px 15px rgba(255, 0, 85, 0.3);
         }
-        .btn:hover { background: #ff0055; color: #fff; }
+        .btn:hover { background: #d6004a; transform: scale(1.05); }
 
-        .music-toggle { position: fixed; top: 110px; right: 20px; z-index: 1000; background: white; border: none; padding: 12px; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1); font-size: 20px; cursor: pointer;}
+        .music-toggle { position: fixed; top: 110px; right: 20px; z-index: 1000; background: white; border: 1px solid #eee; padding: 12px; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1); font-size: 20px; cursor: pointer;}
     </style>
 </head>
 <body onclick="startMusicOnce()">
 
     <div class="insta-tag">insta - @smss1708</div>
-    <div class="header">Made by SIVASINGH☕✨</div>
+    <div class="header">Made by sivasingh ☕✨</div>
     <div class="petals-container" id="petals"></div>
 
     <button class="music-toggle" onclick="toggleMusic(event)">🎵</button>
@@ -146,7 +147,7 @@
     </div>
 
     <div class="page" data-page="9">
-        <div class="message" style="font-size: 38px;">One more thing before you start your day... 🎁👇</div>
+        <div class="message" style="font-size: 38px; color: #ff0055;">One more thing before you start your day... 🎁👇</div>
     </div>
 
     <div class="page" data-page="10">
@@ -159,11 +160,11 @@
         <div id="finalText" style="display:none; margin-top:20px;" class="message">
             You make every morning worth waking up for! ♾️💖
         </div>
-        <p id="hint" style="color: #ff0055; margin-top:10px; font-weight: bold;">Scratch for a surprise, baby! ✨</p>
+        <p id="hint" style="color: #ff0055; margin-top:10px; font-weight: bold; font-family: 'Poppins';">Scratch for a surprise, baby! ✨</p>
     </div>
 
     <div class="nav-bar">
-        <button class="btn" onclick="changePage(-1)">← Back</button>
+        <button class="btn" style="background: #fff; color: #ff0055; border: 1px solid #ff0055;" onclick="changePage(-1)">← Back</button>
         <button class="btn" onclick="changePage(1)">Next →</button>
     </div>
 
@@ -216,8 +217,8 @@
             canvas.width = card.offsetWidth;
             canvas.height = card.offsetHeight;
 
-            // Scratch cover - White/Silver theme
-            ctx.fillStyle = '#e0e0e0';
+            // Scratch cover - Light Silver
+            ctx.fillStyle = '#dcdcdc';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = '#ff0055';
             ctx.font = 'bold 18px Poppins';
@@ -266,4 +267,4 @@
         createPetals();
     </script>
 </body>
-</html>
+    </html>
